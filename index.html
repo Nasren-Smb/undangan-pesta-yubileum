@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Undangan Pesta Jubileum 225 Tahun SFD Berkarya</title>
+
+  <!-- 1. Google Fonts untuk Tipografi Elegan -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:ital,wght@0,500;0,700;1,400&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
+
+  <!-- 2. Bootstrap 5 CSS (Framework Desain & Grid Responsif) -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- 3. Bootstrap Icons (Ikon-ikon) -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+  <!-- 4. SweetAlert2 (Notifikasi Popup Modern) -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+
+  <!-- 5. Custom CSS Kita -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+  <!-- =================================================================
+       CONTAINER UTAMA KARTU UNDANGAN
+       ================================================================= -->
+  <div class="container py-3">
+    <div class="invitation-container shadow-sm mx-auto">
+
+      <!-- ==========================================
+           SECTION 1: COVER PEMBUKA & NAMA TAMU
+           ========================================== -->
+      <section class="cover-section text-center">
+        <p class="text-uppercase tracking-wider text-muted small mb-1">Undangan Pesta Syukur</p>
+        <h1 class="font-script my-2" style="font-size: 2.3rem;">225 Tahun SFD Berkarya</h1>
+        <p class="font-serif fst-italic px-3 mb-3" style="color: var(--primary-light); font-size: 0.95rem; line-height: 1.5;">
+          "Berakar dalam Rasa Syukur, Menyalakan Kasih, Merajut Persaudaraan Dina, dan Menjadi Berkat bagi Sesama dan Semesta"
+        </p>
+
+        <!-- Bingkai Foto Acara (Bisa diganti foto sendiri di folder assets/img/) -->
+        <div class="photo-frame-wrapper">
+          <img src="assets/img/kereta-putus.jpeg" id="foto-acara" alt="Foto Acara">
+        </div>
+
+        <!-- AREA PENERIMA NAMA TAMU (Diambil otomatis dari parameter URL ?nama=...) -->
+        <div class="guest-badge mt-3">
+          <small class="d-block text-muted">Kepada Yth. Bapak/Ibu/Saudara/i:</small>
+          <!-- Nama ini akan diubah oleh file js/script.js -->
+          <div id="tamu-nama" class="guest-name-highlight fw-bold">Tamu Undangan</div>
+        </div>
+
+        <div class="mt-4">
+          <button type="button" id="btn-buka-undangan" class="btn btn-primary-custom px-4 shadow-sm">
+            <i class="bi bi-envelope-open me-1"></i> Buka Undangan
+          </button>
+        </div>
+      </section>
+
+      <!-- ==========================================
+           SECTION 2: DETAIL ACARA & WAKTU
+           ========================================== -->
+      <div id="konten-undangan" class="p-4">
+
+        <!-- Kutipan / Doa Syukur -->
+        <div class="text-center my-3 px-2">
+          <p class="font-serif fst-italic text-muted small mb-1">
+            "Pujilah TUHAN, hai jiwaku, dan janganlah lupakan segala kebaikan-Nya!"
+          </p>
+          <small class="text-secondary fw-semibold">(Mazmur 103:2)</small>
+          <div class="border-bottom w-25 mx-auto my-3"></div>
+        </div>
+
+        <!-- Hitung Mundur (Countdown Timer) -->
+        <div class="text-center mb-4">
+          <h6 class="font-serif fw-bold text-uppercase text-secondary mb-3">Menghitung Hari Menuju Perayaan</h6>
+          <div id="countdown-container" class="d-flex justify-content-center gap-2">
+            <div class="countdown-box">
+              <div id="cd-hari" class="number">0</div>
+              <div class="label">Hari</div>
+            </div>
+            <div class="countdown-box">
+              <div id="cd-jam" class="number">0</div>
+              <div class="label">Jam</div>
+            </div>
+            <div class="countdown-box">
+              <div id="cd-menit" class="number">0</div>
+              <div class="label">Menit</div>
+            </div>
+            <div class="countdown-box">
+              <div id="cd-detik" class="number">0</div>
+              <div class="label">Detik</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Rincian Waktu & Lokasi Acara -->
+        <div class="row g-3 mb-4">
+          <!-- Pesta Jubileum -->
+          <div class="col-12">
+            <div class="event-info-box">
+              <div class="event-icon"><i class="bi bi-award-fill"></i></div>
+              <h5 class="fw-bold font-serif mb-1">Perayaan Ekaristi &amp; Pesta Jubileum</h5>
+              <p class="text-muted small mb-2"><i class="bi bi-clock me-1"></i> Pukul 09.00 WIB - Selesai</p>
+              <p class="small text-secondary mb-0">Komunitas Suster SFD</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tombol Google Maps -->
+        <div class="text-center mb-4">
+          <a href="https://maps.google.com" target="_blank" class="btn btn-outline-gold btn-sm px-3 rounded-pill">
+            <i class="bi bi-geo-alt-fill text-danger me-1"></i> Buka Google Maps
+          </a>
+        </div>
+
+        <!-- ==========================================
+             SECTION 3: FORM KONFIRMASI KEHADIRAN (RSVP)
+             Disimpan langsung ke Google Spreadsheet
+             ========================================== -->
+        <div class="rsvp-card mt-4">
+          <div class="text-center mb-3">
+            <h4 class="font-serif fw-bold">Konfirmasi Kehadiran (RSVP)</h4>
+            <p class="text-muted small">Bantu kami mempersiapkan acara dengan mengisi form di bawah ini:</p>
+          </div>
+
+          <!-- FORM RSVP -->
+          <form id="form-rsvp">
+            <!-- 1. Input Nama -->
+            <div class="mb-3">
+              <label for="rsvp-nama" class="form-label">Nama Anda <span class="text-danger">*</span></label>
+              <input type="text" class="form-control" id="rsvp-nama" placeholder="Contoh: Fauzi Alamsyah" required>
+              <div class="form-text small text-muted">Diisi otomatis dari link yang Anda buka.</div>
+            </div>
+
+            <!-- 2. Input Alamat / Domisili -->
+            <div class="mb-3">
+              <label for="rsvp-alamat" class="form-label">Alamat / Asal Kota <span class="text-danger">*</span></label>
+              <input type="text" class="form-control" id="rsvp-alamat" placeholder="Contoh: Jakarta Barat" required>
+            </div>
+
+            <!-- 3. Pilihan Kehadiran -->
+            <div class="mb-3">
+              <label for="rsvp-kehadiran" class="form-label">Apakah Anda Berkenan Hadir? <span
+                  class="text-danger">*</span></label>
+              <select class="form-select" id="rsvp-kehadiran" required>
+                <option value="" selected disabled>-- Pilih Status Kehadiran --</option>
+                <option value="Hadir">Ya, Saya Akan Hadir</option>
+                <option value="Tidak Hadir">Maaf, Tidak Bisa Hadir</option>
+                <option value="Ragu-ragu">Masih Belum Pasti</option>
+              </select>
+            </div>
+
+            <!-- 4. Pesan / Doa Ucapan (Opsional) -->
+            <div class="mb-3">
+              <label for="rsvp-pesan" class="form-label">Pesan / Doa Restu (Opsional)</label>
+              <textarea class="form-control" id="rsvp-pesan" rows="2"
+                placeholder="Tuliskan ucapan syukur atau doa restu untuk SFD..."></textarea>
+            </div>
+
+            <!-- Tombol Kirim -->
+            <button type="submit" id="btn-submit-rsvp" class="btn btn-primary-custom w-100 py-2">
+              <i class="bi bi-send-fill me-1"></i> Kirim Konfirmasi
+            </button>
+          </form>
+        </div>
+
+        <!-- Footer & Akses Generator Link -->
+        <div class="footer-text mt-4">
+          <p class="mb-1">Terima kasih atas doa restu Anda.</p>
+          <small class="text-muted d-block">
+            Pembuat Acara? <a href="generator.html" class="text-decoration-none fw-bold"
+              style="color: var(--primary-color);">Buat Link Undangan Tamu Disini</a>
+          </small>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- =================================================================
+       SCRIPTS & DEPENDENSI
+       ================================================================= -->
+  <!-- 1. jQuery CDN (Library pendukung manipulasi DOM & AJAX) -->
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
+  <!-- 2. Bootstrap 5 JS Bundle -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- 3. SweetAlert2 JS (Untuk popup alert yang manis) -->
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+  <!-- 4. Script Logika Undangan Kita -->
+  <script src="js/script.js"></script>
+
+</body>
+
+</html>
