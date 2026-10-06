@@ -1,29 +1,41 @@
 /* ==========================================================================
-   STYLE KHUSUS UNDANGAN ONLINE - TEMA COKLAT BERCAMPUR EMAS (LUXURY BROWN & GOLD)
+   STYLE KHUSUS UNDANGAN ONLINE - TEMA COKLAT SFD & EMAS (LUXURY SFD BROWN & GOLD)
+   - Latar belakang & Kartu: Coklat Jubah Fransiskan (SFD)
+   - Teks & Angka: Putih Bersih / Krem Gading Elegan
+   - Warna Sekunder & Aksen: Royal Gold berkilau
    ========================================================================== */
 
 /* --- VARIABEL WARNA & TEMA --- */
 :root {
-  /* Nuansa Coklat */
-  --primary-color: #633f21;        /* Coklat Mocha Pekat & Elegan */
-  --primary-hover: #4a2d15;        /* Coklat Espresso Lebih Tua saat Hover */
-  --primary-light: #8d5b32;        /* Coklat Keemasan Sedang */
-  --chocolate-gradient: linear-gradient(135deg, #5c3a21 0%, #7d4d29 50%, #4f3019 100%);
+  /* Nuansa Coklat Jubah SFD (Fransiskan) */
+  --sfd-brown-dark: #1f0f06;        /* Coklat Pekat Espresso untuk Form & Input */
+  --sfd-brown-card: #341c0e;        /* Coklat Khas Jubah SFD untuk Kartu */
+  --sfd-brown-surface: #412413;     /* Coklat Sedang untuk Event Box & RSVP */
+  --sfd-brown-light: #54301a;       /* Coklat Hangat */
+  --chocolate-gradient: linear-gradient(135deg, #442413 0%, #30190c 100%);
+  --card-bg: #341c0e;
 
-  /* Nuansa Emas (Gold) */
-  --gold-primary: #d4af37;         /* Emas Klasik (Royal Gold) */
-  --gold-hover: #b89125;           /* Emas Tua */
-  --gold-light: #f6eedb;           /* Emas Krem Lembut */
-  --gold-border: #e2c98a;          /* Border Aksen Emas */
-  --gold-gradient: linear-gradient(135deg, #d4af37 0%, #f3e5ab 50%, #aa7a1e 100%);
+  /* Nuansa Emas (Gold) - Warna Sekunder Mewah & Elegan */
+  --gold-primary: #d4af37;          /* Emas Klasik (Royal Gold) */
+  --gold-hover: #fedb72;            /* Emas Terang Berkilau */
+  --gold-dark: #aa7a1e;             /* Emas Tua */
+  --gold-light: #fef4dd;            /* Emas Krem Lembut */
+  --gold-border: #d4af37;           /* Border Aksen Emas */
+  --gold-border-soft: rgba(212, 175, 55, 0.45);
+  --gold-gradient: linear-gradient(135deg, #d4af37 0%, #f7e49b 50%, #b38222 100%);
   --gold-shine: linear-gradient(90deg, #aa7a1e 0%, #fedb72 30%, #d4af37 70%, #916315 100%);
 
-  /* Latar Belakang & Kartu */
-  --bg-gradient: linear-gradient(135deg, #fbf7f2 0%, #f4eae0 50%, #ebdcd0 100%);
-  --card-bg: rgba(255, 255, 255, 0.96);
-  --text-main: #3d291a;            /* Teks Utama: Coklat Gelap Elegan */
-  --text-muted: #7c6858;           /* Teks Redup: Coklat Tanah */
-  --shadow-soft: 0 15px 35px rgba(99, 63, 33, 0.12); /* Bayangan Bernuansa Hangat */
+  /* Nuansa Teks (Putih & Krem menggantikan Coklat Tua sebelumnya) */
+  --text-main: #ffffff;             /* Teks Utama: Putih Bersih & Kontras */
+  --text-muted: #ded0c4;            /* Teks Redup: Putih Gading / Krem Lembut */
+  --text-gold: #fedb72;             /* Teks Aksen Emas */
+  --primary-color: #ffd56b;         /* Aksen Link & Highlight: Emas Bersinar */
+  --primary-hover: #ffeaa7;
+  --primary-light: #ffffff;         /* Kutipan / Sub-judul: Putih Bersih */
+
+  /* Latar Belakang Layar */
+  --bg-gradient: radial-gradient(circle at 50% 15%, #381e0f 0%, #241208 55%, #130702 100%);
+  --shadow-soft: 0 20px 45px rgba(0, 0, 0, 0.7), 0 0 25px rgba(212, 175, 55, 0.18);
 }
 
 /* --- PENGATURAN DASAR BODY --- */
@@ -31,12 +43,25 @@ body {
   font-family: 'Plus Jakarta Sans', sans-serif;
   color: var(--text-main);
   background: var(--bg-gradient);
+  background-attachment: fixed;
   min-height: 100vh;
   margin: 0;
   padding: 0;
 }
 
-/* Tipografi Elegan */
+/* Tipografi & Warna Default */
+h1, h2, h3, h4, h5, h6 {
+  color: #ffffff;
+}
+
+p {
+  color: var(--text-main);
+}
+
+.text-muted, .text-secondary {
+  color: var(--text-muted) !important;
+}
+
 .font-serif {
   font-family: 'Playfair Display', Georgia, serif;
 }
@@ -49,23 +74,29 @@ body {
   -webkit-text-fill-color: transparent;
   display: inline-block;
   line-height: 1.3;
-  filter: drop-shadow(0 2px 4px rgba(99, 63, 33, 0.15));
+  filter: drop-shadow(0 2px 5px rgba(0, 0, 0, 0.6));
+}
+
+/* Garis Pembatas / Divider Emas */
+hr, .border-bottom {
+  border-color: var(--gold-border-soft) !important;
 }
 
 /* --- CONTAINER UTAMA (KARTU UNDANGAN) --- */
 .invitation-container {
   max-width: 580px;
   margin: 20px auto;
-  background-color: var(--card-bg);
+  background: linear-gradient(165deg, #371d0e 0%, #2e170c 50%, #251208 100%);
   border-radius: 24px;
   overflow: hidden;
   box-shadow: var(--shadow-soft);
   border: 2px solid var(--gold-border);
   position: relative;
   transition: all 0.3s ease;
+  color: #ffffff;
 }
 
-/* Aksen Garis Emas di Atas Kartu */
+/* Aksen Garis Emas Berkilau di Atas Kartu */
 .invitation-container::before {
   content: "";
   position: absolute;
@@ -82,28 +113,29 @@ body {
   position: relative;
   text-align: center;
   padding: 45px 20px 35px;
-  background: linear-gradient(180deg, #fdf9f4 0%, #ffffff 100%);
+  background: linear-gradient(180deg, #442413 0%, #31190c 100%);
   border-bottom: 2px dashed var(--gold-border);
 }
 
 .guest-badge {
   display: inline-block;
-  background: linear-gradient(135deg, #fcf7ef 0%, #f6eedb 100%);
-  color: var(--primary-color);
+  background: linear-gradient(135deg, #4d2b17 0%, #361b0c 100%);
+  color: #ffffff;
   padding: 10px 24px;
   border-radius: 50px;
   font-size: 0.95rem;
   font-weight: 600;
   border: 1.5px solid var(--gold-primary);
   margin-top: 15px;
-  box-shadow: 0 4px 12px rgba(212, 175, 55, 0.2);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4), 0 0 12px rgba(212, 175, 55, 0.25);
 }
 
 .guest-name-highlight {
   font-size: 1.35rem;
-  color: var(--primary-color);
+  color: #ffffff;
   text-transform: capitalize;
   letter-spacing: 0.5px;
+  text-shadow: 0 0 10px rgba(254, 219, 114, 0.4);
 }
 
 /* --- BINGKAI FOTO ACARA (KOMBINASI COKLAT & EMAS) --- */
@@ -115,7 +147,7 @@ body {
   border-radius: 50%;
   padding: 7px;
   background: var(--gold-shine);
-  box-shadow: 0 10px 25px rgba(99, 63, 33, 0.25);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.6), 0 0 15px rgba(212, 175, 55, 0.35);
   transition: transform 0.4s ease;
 }
 
@@ -128,51 +160,55 @@ body {
   height: 100%;
   object-fit: cover;
   border-radius: 50%;
-  background-color: #fff;
-  border: 3px solid #ffffff;
+  background-color: var(--sfd-brown-dark);
+  border: 3px solid var(--gold-primary);
 }
 
 /* --- KOTAK DETAIL ACARA --- */
 .event-info-box {
-  background: linear-gradient(135deg, #fdfaf6 0%, #f9f2e8 100%);
+  background: linear-gradient(135deg, #422413 0%, #31190c 100%);
   border-radius: 16px;
   padding: 22px 18px;
   border: 1.5px solid var(--gold-border);
   margin-bottom: 15px;
   text-align: center;
   transition: all 0.3s ease;
+  color: #ffffff;
 }
 
 .event-info-box:hover {
-  border-color: var(--gold-primary);
-  box-shadow: 0 6px 18px rgba(212, 175, 55, 0.15);
+  border-color: var(--gold-hover);
+  box-shadow: 0 6px 20px rgba(212, 175, 55, 0.25);
   transform: translateY(-2px);
 }
 
 .event-icon {
-  font-size: 2rem;
+  font-size: 2.2rem;
   color: var(--gold-primary);
   margin-bottom: 8px;
-  filter: drop-shadow(0 2px 3px rgba(99, 63, 33, 0.15));
+  filter: drop-shadow(0 2px 6px rgba(212, 175, 55, 0.45));
 }
 
 /* --- COUNTDOWN TIMER --- */
 .countdown-box {
-  background: #ffffff;
+  background: linear-gradient(145deg, #2b1509 0%, #1e0d04 100%);
   border: 1.5px solid var(--gold-border);
   border-radius: 12px;
   padding: 10px 14px;
   text-align: center;
   min-width: 70px;
-  box-shadow: 0 4px 10px rgba(99, 63, 33, 0.05);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.45);
 }
 
+/* Angka putih bersinar */
 .countdown-box .number {
-  font-size: 1.5rem;
+  font-size: 1.6rem;
   font-weight: 700;
-  color: var(--primary-color);
+  color: #ffffff;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.4);
 }
 
+/* Label emas */
 .countdown-box .label {
   font-size: 0.75rem;
   text-transform: uppercase;
@@ -183,85 +219,104 @@ body {
 
 /* --- FORM RSVP --- */
 .rsvp-card {
-  background: #ffffff;
+  background: linear-gradient(135deg, #3c2010 0%, #2a1508 100%);
   border-radius: 18px;
   padding: 28px 22px;
   border: 1.5px solid var(--gold-border);
-  box-shadow: 0 6px 20px rgba(99, 63, 33, 0.06);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.45);
+  color: #ffffff;
 }
 
 .rsvp-card h4 {
-  color: var(--primary-color);
+  color: #ffffff;
 }
 
 .form-label {
   font-weight: 600;
   font-size: 0.9rem;
-  color: var(--text-main);
+  color: #ffffff;
 }
 
+/* Input & Select: Latar Coklat Pekat dengan Teks Putih */
 .form-control, .form-select {
   border-radius: 10px;
-  border: 1.5px solid #dfd1c3;
+  border: 1.5px solid #5a341e;
   padding: 10px 14px;
   font-size: 0.95rem;
-  background-color: #fdfcfb;
-  color: var(--text-main);
+  background-color: #210f05;
+  color: #ffffff;
   transition: all 0.2s ease;
+}
+
+.form-control::placeholder {
+  color: #bba697;
 }
 
 .form-control:focus, .form-select:focus {
   border-color: var(--gold-primary);
-  background-color: #ffffff;
-  box-shadow: 0 0 0 0.25rem rgba(212, 175, 55, 0.25);
-  color: var(--text-main);
+  background-color: #281206;
+  box-shadow: 0 0 0 0.25rem rgba(212, 175, 55, 0.3);
+  color: #ffffff;
 }
 
-/* --- TOMBOL UTAMA BERKILAU COKLAT & EMAS --- */
+.form-select option {
+  background-color: #210f05;
+  color: #ffffff;
+}
+
+.form-text {
+  color: var(--text-muted) !important;
+}
+
+/* --- TOMBOL UTAMA EMAS ELEGAN (SECONDARY COLOR) --- */
 .btn-primary-custom {
-  background: var(--chocolate-gradient);
-  border: 1.5px solid var(--gold-primary);
-  color: #fff9ed;
-  font-weight: 600;
+  background: var(--gold-gradient);
+  border: 1.5px solid #ffe89e;
+  color: #221004;
+  font-weight: 700;
   padding: 11px 26px;
   border-radius: 12px;
-  box-shadow: 0 6px 16px rgba(99, 63, 33, 0.25);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.45), 0 0 15px rgba(212, 175, 55, 0.3);
   letter-spacing: 0.5px;
   transition: all 0.3s ease;
 }
 
 .btn-primary-custom:hover {
-  background: linear-gradient(135deg, #70421e 0%, #945d31 50%, #573419 100%);
-  border-color: #ffd875;
-  color: #ffffff;
+  background: linear-gradient(135deg, #fedb72 0%, #ffffff 50%, #d4af37 100%);
+  border-color: #ffffff;
+  color: #1a0a02;
   transform: translateY(-2px);
-  box-shadow: 0 8px 20px rgba(212, 175, 55, 0.35);
+  box-shadow: 0 8px 25px rgba(212, 175, 55, 0.55);
 }
 
 /* Tombol Garis Tepi Emas */
 .btn-outline-gold {
   border: 1.5px solid var(--gold-primary);
-  color: var(--primary-color);
-  background: transparent;
+  color: var(--gold-hover);
+  background: rgba(212, 175, 55, 0.08);
   font-weight: 600;
   transition: all 0.3s ease;
 }
 
 .btn-outline-gold:hover {
-  background: var(--gold-primary);
-  color: #ffffff;
+  background: var(--gold-gradient);
+  color: #221004;
+  border-color: var(--gold-hover);
+  font-weight: 700;
+  box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
 }
 
 /* --- GENERATOR HALAMAN ADMIN --- */
 .admin-card {
   max-width: 650px;
   margin: 40px auto;
-  background: #ffffff;
+  background: linear-gradient(145deg, #371d0e 0%, #2a1508 100%);
   border-radius: 20px;
   padding: 35px 28px;
   box-shadow: var(--shadow-soft);
   border: 2px solid var(--gold-border);
   position: relative;
+  color: #ffffff;
 }
 
 .admin-card::before {
@@ -275,10 +330,48 @@ body {
   border-radius: 20px 20px 0 0;
 }
 
+.badge-admin {
+  background: #4b2915;
+  color: var(--gold-hover);
+  border: 1px solid var(--gold-primary);
+  font-weight: 600;
+}
+
+.input-group-text {
+  background-color: #210f05;
+  border: 1.5px solid #5a341e;
+  color: var(--gold-primary);
+}
+
+#output-link-input {
+  background-color: #1a0b03 !important;
+  color: #ffffff !important;
+  border: 1.5px solid var(--gold-border);
+}
+
+#output-wa-text {
+  background-color: #1a0b03 !important;
+  color: #f5ede6 !important;
+  border: 1.5px solid var(--gold-border);
+}
+
+.border-top-gold {
+  border-top: 1px solid var(--gold-border-soft);
+}
+
 /* Footer */
 .footer-text {
   text-align: center;
   font-size: 0.85rem;
   color: var(--text-muted);
   padding: 20px 0 10px;
+}
+
+.footer-text a {
+  color: var(--gold-hover);
+}
+
+.footer-text a:hover {
+  color: #ffffff;
+  text-decoration: underline !important;
 }
